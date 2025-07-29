@@ -1,0 +1,416 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JakesTris Web - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+    --bg: #0d0d0d;
+    --text: #ffffff;
+    --accent: #00ff88;
+    --secondary: #ccc;
+    --card-bg: #1a1a1a;
+    --header-bg: #0f0f0f;
+    --footer-bg: #0f0f0f;
+  }
+
+  body.light {
+    --bg: #f2f2f2;
+    --text: #111;
+    --accent: #009966;
+    --secondary: #444;
+    --card-bg: #ffffff;
+    --header-bg: #ffffff;
+    --footer-bg: #ffffff;
+  }
+
+  /* ✅ Keep nav text white in light mode */
+  body.light header nav a {
+    color: #ffffff;
+  }
+
+  body.light header nav a:hover,
+  body.light header nav a.active {
+    color: var(--accent);
+  }
+
+  /* ✅ Keep footer dark with white text in light mode */
+  body.light footer {
+    background-color: #0f0f0f;
+    color: #ffffff;
+  }
+
+  /* ✅ Footer links in light mode */
+  body.light footer a {
+    color: #ffffff;
+  }
+
+  body.light footer a:hover {
+    color: var(--accent);
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+    transition: all 0.3s ease;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    background-color: #0f0f0f; /* black header always */
+    box-shadow: 0 4px 10px rgba(0, 255, 136, 0.1);
+  }
+
+  .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--accent);
+    text-decoration: none;
+    position: relative;
+  }
+
+  .logo::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .logo:hover::after {
+    width: 100%;
+  }
+
+  nav a {
+    margin: 0 15px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after,
+  nav a.active::after {
+    width: 100%;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: var(--accent);
+  }
+
+  .toggle-theme {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  footer {
+    padding: 30px 60px;
+    background-color: var(--footer-bg);
+    color: var(--text);
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  footer a {
+    color: var(--text);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+
+  footer a:hover {
+    color: var(--accent);
+  }
+
+  /* Optional: social icons (if you use them) */
+  .social-icons a {
+    font-size: 1.5em;
+    margin: 0 10px;
+    color: var(--text);
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: var(--accent);
+  }
+    .hero {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .profile-img img {
+      width: 380px;
+      height: auto;
+      border: 4px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+      object-fit: cover;
+    }
+
+    .portfolio-intro {
+      flex: 1;
+      min-width: 280px;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .download-btn {
+      background-color: var(--accent);
+      color: var(--bg);
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+      background-color: #00cc70;
+    }
+
+    section .content-block {
+      margin-top: 40px;
+    }
+
+    h1, h2 {
+      color: var(--accent);
+    }
+
+    ul {
+      line-height: 1.6;
+    }
+
+    .gallery {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .gallery h2 {
+      margin-bottom: 20px;
+    }
+
+    .gallery-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery-images img {
+      width: 240px;
+      height: auto;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-images img:hover {
+      transform: scale(1.05);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: var(--footer-bg);
+      color: #777;
+      font-size: 0.9em;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .portfolio-intro {
+        text-align: center;
+      }
+
+      .gallery-images {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">JakesTris</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="toggle-theme" onclick="toggleTheme()"><i class="fas fa-adjust"></i></button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="profile-img">
+        <img src="tristan.jpg.png" alt="Your Portrait" />
+      </div>
+
+      <div class="portfolio-intro">
+        <h1>My Portfolio</h1>
+        <p>Hello! I’m Tristan Jake Paligan, a passionate learner aspiring to become a lawful and dedicated law enforcement or uniformed personnel someday...</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Sex:</strong> Male</li>
+          <li><strong>Birthdate:</strong> September 5, 2005</li>
+          <li><strong>Civil Status:</strong> Single</li>
+          <li><strong>Citizenship:</strong> Filipino</li>
+          <li><strong>Languages:</strong> English and Tagalog</li>
+        </ul>
+        <a href="E:\Web Profile\Tristan-Jake-Paligan-Resume.docx" class="download-btn" download>📄 Download Resume</a>
+      </div>
+    </div>
+  <<section class="content-section">
+  <div class="content-block">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>College of Criminology:</strong> University of the Cordilleras</li>
+      <li><strong>Senior High School:</strong> University of the Cordilleras</li>
+      <li><strong>Junior High:</strong> Quirino High School</li>
+      <li><strong>Elementary:</strong> Project 3 Elementary School</li>
+    </ul>
+  </div>
+
+  <div class="content-block">
+    <h2>Work Experience & Participation</h2>
+    <ul>
+      <li><strong>Customer Service Representative</strong> – Foundever (2023 - 2024)</li>
+    </ul>
+  </div>
+
+  <div class="content-block">
+    <h2>Seminars & Trainings</h2>
+    <ul>
+      <li><strong>Introduction to Food and Beverage Services</strong> – TESDA Online Program</li>
+      <li><strong>Deal with Intoxicated Guests</strong> – TESDA Online Program</li>
+      <li><strong>Providing Housekeeping Services</strong> – TESDA Online Program</li>
+      <li><strong>Providing Valet Services</strong> – TESDA Online Program</li>
+      <li><strong>Providing Laundry Services to Guests</strong> – TESDA Online Program</li>
+      <li><strong>Microsoft Digital Literacy</strong> – TESDA Online Program</li>
+      <li><strong>Wi-Fi 101 and Digital Thumbprint Program</strong> – TESDA Online Program</li>
+      <li><strong>Crafting Your Career</strong> – TESDA Online Program</li>
+      <li><strong>Your Guide to Job Readiness</strong> – TESDA Online Program</li>
+      <li><strong>Building Human Skills for Career Success</strong> – TESDA Online Program</li>
+      <li><strong>Certificate of Participation</strong> – UC Center for Productions</li>
+      <li><strong>ROTC Graduate</strong> – Philippine Air Force</li>
+    </ul>
+  </div>
+
+  <div class="content-block">
+    <h2>Awards</h2>
+    <ul>
+      <li><strong>With High Honors</strong> – Junior High School</li>
+      <li><strong>With High Honors</strong> – Senior High School</li>
+    </ul>
+  </div>
+</section>
+
+  <div class="gallery" style="padding: 40px 60px;">
+    <h2 style="color: var(--accent); font-size: 1.8em; text-align: center;">Gallery</h2>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+      <img src="1.jpeg" alt="Gallery 1" onclick="openLightbox(this.src)" style="width: 100%; max-width: 340px; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" />
+      <img src="2.jpeg" alt="Gallery 2" onclick="openLightbox(this.src)" style="width: 100%; max-width: 340px; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" />
+    </div>
+    <div style="margin-top: 30px; text-align: center;">
+      <img src="3.jpg" alt="Gallery 3" onclick="openLightbox(this.src)" style="width: 100%; max-width: 720px; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" />
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Enlarged Image" />
+  </div>
+
+  <footer>
+    &copy; 2025 Tristan Jake Paligan. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
+
+    function openLightbox(src) {
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = src;
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+</body>
+</html>

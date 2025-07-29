@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JakesTris Web - About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg-color: #0d0d0d;
+      --text-color: #ffffff;
+      --accent-color: #00ff88;
+      --header-footer-bg: #0f0f0f;
+      --footer-color: #ffffff;
+      --nav-link: #ccc;
+    }
+
+    [data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #0d0d0d;
+  --accent-color: #007d4f;
+  --header-footer-bg: #0f0f0f; 
+  --footer-color: #aaa;
+  --nav-link: #ffffff; 
+}
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('file:///E:/Web%20Profile/HAHAHA.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+   .hero {
+       background-color: rgba(0, 0, 0, 0.4); /* dark translucent background */
+       border-radius: 12px;
+       padding: 40px;
+     }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      background-color: var(--header-footer-bg);
+      box-shadow: 0 4px 10px rgba(0, 255, 136, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+
+    nav a {
+      color: var(--nav-link);
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent-color);
+    }
+
+    .toggle-theme {
+      background: none;
+      border: none;
+      color: var(--accent-color);
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-theme:hover {
+      transform: rotate(20deg);
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 60px;
+      min-height: 80vh;
+    }
+
+    .hero-text h1 {
+      font-size: 3em;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+
+    .hero-text h3 {
+      font-size: 1.5em;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.1em;
+      color: var(--nav-link);
+      line-height: 1.7;
+      max-width: 800px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: var(--header-footer-bg);
+      color: var(--footer-color);
+      font-size: 0.9em;
+      margin-top: 60px;
+      border-top: 1px solid #1a1a1a;
+      transition: background-color 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero {
+        text-align: center;
+        align-items: center;
+        padding: 60px 30px;
+      }
+
+      .hero-text {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">JakesTris</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="toggle-theme" onclick="toggleTheme()">
+      <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>About Me</h1>
+      <h3>Future Law Enforcer & Advocate of Discipline</h3>
+      <p>Hello! I’m Tristan Jake Paligan, a passionate individual aiming to become a lawful law enforcement or uniformed personnel someday. I strive to serve with integrity, uphold justice, and contribute to the safety and well-being of the community through discipline, knowledge, and dedication.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Tristan Jake Paligan. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById("theme-icon");
+      const current = html.getAttribute("data-theme");
+      const newTheme = current === "light" ? "dark" : "light";
+      html.setAttribute("data-theme", newTheme);
+      icon.className = newTheme === "light" ? "fas fa-sun" : "fas fa-moon";
+    }
+
+    // Default theme
+    document.documentElement.setAttribute("data-theme", "dark");
+    document.getElementById("theme-icon").className = "fas fa-moon";
+  </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JakesTris Web - Skills</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #ffffff;
+      --accent: #00ff88;
+      --secondary: #ccc;
+      --card-bg: #1a1a1a;
+      --header-bg: #0f0f0f;
+      --footer-bg: #0f0f0f;
+    }
+
+    body.light {
+      --bg: #f2f2f2;
+      --text: #111;
+      --accent: #009966;
+      --secondary: #444;
+      --card-bg: #ffffff;
+      --header-bg: #0f0f0f;  /* Keep header dark */
+      --footer-bg: #0f0f0f;  /* Keep footer dark */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+     header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      background-color: var(--header-bg);
+      box-shadow: 0 4px 10px rgba(0, 255, 136, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .logo:hover::after {
+      width: 100%;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    body.light header nav a {
+      color: #ffffff; 
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    .toggle-theme {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 1.2em;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 60px;
+      min-height: 80vh;
+    }
+
+    .hero-text h1 {
+      font-size: 3em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.1em;
+      color: var(--secondary);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+   
+    .hero {
+    background: url(file:///E:/Web%20Profile/ayos.png) center center/cover no-repeat;
+    position: relative;
+    z-index: 1;
+    }
+
+    .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Optional dark overlay for readability */
+    z-index: -1;
+    }
+
+
+    .skills-list {
+      list-style-type: disc;
+      padding-left: 20px;
+      color: var(--secondary);
+      font-size: 1.2em;
+      line-height: 2;
+    }
+
+    .skills-list li::marker {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: var(--footer-bg);
+      color: #777;
+      font-size: 0.9em;
+      margin-top: 60px;
+      border-top: 1px solid #1a1a1a;
+      transition: background-color 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .hero {
+        text-align: center;
+        align-items: center;
+        padding: 40px 20px;
+      }
+
+      .hero-text {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">JakesTris</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html" class="active">Skills</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="toggle-theme" onclick="toggleTheme()"><i class="fas fa-adjust"></i></button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>My Skills</h1>
+      <p>Here are some of the key skills I’ve developed as a Registered Criminologist:</p>
+      <ul class="skills-list">
+        <li>Law Enforcement Procedures</li>
+        <li>Investigation Techniques</li>
+        <li>Public Safety & Security</li>
+        <li>Leadership and Discipline</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Tristan Jake Paligan. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+  </script>
+
+</body>
+</html>
